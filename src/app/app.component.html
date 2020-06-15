@@ -1,0 +1,44 @@
+
+  <body>
+    <div class="s01" *ngIf="articles.length == 0">
+      <form>
+        <fieldset>
+          <legend>WORLD NEWS</legend>
+        </fieldset>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input id="search" type="text" placeholder="What do you want to know about?" [(ngModel)]="busqueda" name="busqueda" />
+          </div>
+          <!-- <div class="input-field second-wrap">
+            <input id="location" type="text" placeholder="location" />
+          </div> -->
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="button" (click)="search()">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row pl-md-5 pr-md-5" *ngIf="articles.length > 0">
+      <div class="col-md-12 p-5 ">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Your Search: <strong>{{ busqueda }}</strong></h2>
+              </div>
+              <div class="col-md-4 text-right"> 
+                <button class="btn btn-primary pull-right btn-lg" type="button " (click)="back()"> Back </button>
+              </div>
+        </div>
+
+      </div>
+      <div class="col-sm-12 col-lg-4 col-md-6 mb-2"  *ngFor="let a of articles" >
+          <div class="card"  (click)="open( a.url)" style="cursor: pointer;">
+              <img class="card-img-top" [src]="a.urlToImage" alt="Not Found Image">
+              <div class="card-body">
+                <h5 class="card-title">{{a.title}}</h5>
+                <p class="card-text">{{ a.description}}</p>
+              </div>
+            </div>
+      </div>
+     
+    </div>
+  </body>
